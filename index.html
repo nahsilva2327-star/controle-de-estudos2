@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Estudos por Matérias</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>📚 Portal de Estudos TJSP</h1>
+        <p id="header-subtitle">Selecione um tópico abaixo para abrir seu ambiente de estudos</p>
+    </header>
+
+    <!-- TELA 1: OS 3 BLOCOS DE MATÉRIAS -->
+    <main id="subjects-hub" class="hub-container">
+        <!-- Bloco 1 -->
+        <section class="subject-block">
+            <h2>✍️ Português e Redação (16 Questões)</h2>
+            <p class="block-desc">Compreensão e interpretação, Estruturação e Gramática.</p>
+            <div class="topics-list">
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Português e Redação', 'Compreensão e interpretação')">
+                    <strong>Compreensão e interpretação</strong>
+                    <span>Análise, compreensão e interpretação de textos em geral.</span>
+                </button>
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Português e Redação', 'Estruturação Textual')">
+                    <strong>Estruturação Textual</strong>
+                    <span>Relações entre ideias; Recursos de coesão; Significação contextual, etc.</span>
+                </button>
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Português e Redação', 'Gramática')">
+                    <strong>Gramática</strong>
+                    <span>Classes de palavras; Concordância verbal e nominal; Regencia verbal e nominal; Colocação pronominal; Crase; Pontuação.</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Bloco 2 -->
+        <section class="subject-block">
+            <h2>⚖️ Direito (30 Questões)</h2>
+            <p class="block-desc">Artigos, normas e Leis.</p>
+            <div class="topics-list">
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Direito', 'Direito Penal')">
+                    <strong>Direito Penal</strong>
+                    <span>Artigos 293 a 305; 307; 308; 311-A; 312 a 317; 319 a 333; 336 e 337; 339 a 347; 357 e 359 do Código Penal.</span>
+                </button>
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Direito', 'Direito Processual Penal')">
+                    <strong>Direito Processual Penal</strong>
+                    <span>Artigos 251 a 258; 261 a 267; 274; 351 a 372; 394 a 497; 531 a 538; 541 a 548; 574 a 667 do CPP e Lei 9.099.</span>
+                </button>
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Direito', 'Direito Processual Civil')">
+                    <strong>Direito Processual Civil</strong>
+                    <span>Código de Processo Civil (artigos 144 a 155; 188 a 275; 294 a 311; 318 a 538; 994 a 1026).</span>
+                </button>
+                 <button type="button" class="topic-card-btn" onclick="openStudyPanel('Direito', 'Direito Constitucional')">
+                    <strong>Direito Constitucional</strong>
+                    <span>Título II (Capitulos I, II e III), Título III (Capítulo VII, Seções I e II) e o artigo 92 da Constituição Federal.</span>
+                </button>
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Direito', 'Direito Administrativo')">
+                    <strong>Direito Administrativo</strong>
+                    <span>Estatuto dos Funcionários Públicos Civis do Estado de São Paulo.</span>
+                </button>
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Direito', 'Legislação Interna e Normas Especiais')">
+                    <strong>Legislação Interna e Normas Especiais</strong>
+                    <span>Resoluções TJSP</span>
+                </button>
+            </div>
+        </section>
+
+        <!-- Bloco 3 -->
+        <section class="subject-block">
+            <h2>🌎 Conhecimentos Gerais (24 Questões)</h2>
+            <p class="block-desc">Atualidades, Matemática, Informática e Raciocínio Lógico.</p>
+            <div class="topics-list">
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Conhecimentos Gerais', 'Atualidades')">
+                    <strong>Atualidades</strong>
+                    <span>Fatos políticos, econômicos, sociais e culturais.</span>
+                </button>
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Conhecimentos Gerais', 'Matemática')">
+                    <strong>Matemática</strong>
+                    <span>Operações com números reais, razão e proporção; porcentagem, etc.</span>
+                </button>
+                <button type="button" class="topic-card-btn" onclick="openStudyPanel('Conhecimentos Gerais', 'Redação')">
+                    <strong>Informática</strong>
+                    <span>MS-Windows 10 ou superior; MS-Word; MS-Excel; Correio Eletrônico; Internet; MS-Teams e OneDrive.</span>
+                </button>
+                 <button type="button" class="topic-card-btn" onclick="openStudyPanel('Conhecimentos Gerais', 'Redação')">
+                    <strong>Raciocínio Lógico</strong>
+                    <span>Estrutura lógica de relações arbitrárias entre pessoas, lugares, coisas e eventos fictícios.</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- TELA 2: O PAINEL DE ESTUDOS -->
+    <section id="study-workspace" class="workspace hidden">
+        <div class="workspace-nav">
+            <button type="button" id="back-btn" class="back-btn">⬅ Voltar para Matérias</button>
+            <div class="active-context">
+                <span id="context-block" class="context-badge">Bloco</span>
+                <h2 id="context-topic">Nome da Matéria</h2>
+            </div>
+             <!-- NOVO BOTÃO: MARCAR MATÉRIA COMO ESTUDADA -->
+            <button type="button" id="complete-subject-btn" class="status-subject-btn" onclick="toggleSubjectCompleted()">
+                ⬜ Marcar como Estudada
+            </button>
+        </div>
+
+                <!-- SEÇÃO DE 10 BOTÕES DE MATÉRIA + ESPAÇO DE RESUMO EXCLUSIVO -->
+        <section class="card modules-card">
+            <div class="modules-header">
+                <h2>📂 Módulos / Sub-matérias (1 a 10)</h2>
+                <small style="color: var(--text-muted);">Clique em um botão para abrir seu resumo específico</small>
+            </div>
+
+            <!-- Grade onde o JS vai gerar os 10 botões -->
+            <div id="modules-buttons-grid" class="modules-grid"></div>
+
+            <!-- Espaço específico de resumo que abre ao clicar em um dos 10 botões -->
+            <div id="module-editor-area" class="module-editor hidden">
+                <div class="module-editor-top">
+                    <div class="module-title-group">
+                        <span id="active-module-badge" class="badge">Matéria 01</span>
+                        <input type="text" id="module-custom-title" oninput="autoSaveModuleData()" placeholder="Digite o nome deste assunto (ex: Atos Administrativos)...">
+                    </div>
+                    <button type="button" class="mode-btn" onclick="closeModuleEditor()">Fechar Aba ✕</button>
+                </div>
+
+                <textarea id="module-summary-textarea" rows="7" oninput="autoSaveModuleData()" placeholder="Escreva aqui o resumo específico deste módulo..."></textarea>
+                
+                <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
+                    <small id="module-save-status" style="color: var(--success); font-weight: 600;">✓ Salvo automaticamente</small>
+                </div>
+            </div>
+        </section>
+
+        </div>
+
+        <div class="dashboard">
+            <!-- Pomodoro -->
+            <section class="card pomodoro-card">
+                <h2>⏱️ Timer Pomodoro</h2>
+                <div class="timer-display" id="timer">25:00</div>
+                <div class="timer-controls">
+                    <button type="button" id="start-btn">Iniciar</button>
+                    <button type="button" id="pause-btn">Pausar</button>
+                    <button type="button" id="reset-btn">Resetar</button>
+                </div>
+                <div class="mode-controls">
+                    <button type="button" class="mode-btn active" data-time="25">Foco (25m)</button>
+                    <button type="button" class="mode-btn" data-time="5">Pausa Curta (5m)</button>
+                </div>
+            </section>
+
+            <!-- Tópicos + Resumo Integrado -->
+            <section class="card tasks-card">
+                <h2>✅ Assuntos</h2>
+                <form id="task-form">
+                    <input type="text" id="topic-input" placeholder="Novo assunto desta matéria..." required>
+                    <button type="submit">Adicionar Assunto</button>
+                </form>
+                <ul id="task-list"></ul>
+            </section>
+
+            <!-- Flashcards -->
+                        <!-- Anotações Complementares (Post-its) -->
+            <section class="card postit-card">
+                <h2>📌 Anotações Complementares</h2>
+                <form id="postit-form">
+                    <textarea id="postit-input" rows="2" placeholder="Escreva um lembrete, exceção de lei ou macete..." required></textarea>
+                    <div class="postit-controls">
+                        <div class="color-picker">
+                            <label><input type="radio" name="postit-color" value="#fef08a" checked> <span class="dot yellow"></span></label>
+                            <label><input type="radio" name="postit-color" value="#bbf7d0"> <span class="dot green"></span></label>
+                            <label><input type="radio" name="postit-color" value="#bfdbfe"> <span class="dot blue"></span></label>
+                            <label><input type="radio" name="postit-color" value="#fbcfe8"> <span class="dot pink"></span></label>
+                        </div>
+                        <button type="submit">Colar Post-it</button>
+                    </div>
+                </form>
+                <div id="postits-container" class="postits-grid"></div>
+            </section>
+
+        </div>
+
+                   <!-- BLOCO 1: MATERIAL DE APOIO -->
+        <article class="card reference-card">
+            <div class="ref-header">
+                <h2 id="ref-title-1">✍️ Resumo:</h2>
+                
+                <div class="ref-toolbar" id="ref-toolbar-1">
+                    <span class="toolbar-label">Marca-texto:</span>
+                    <button type="button" class="hl-btn yellow" title="Grifar em Amarelo" onclick="highlightSelection(1, '#fef08a')"></button>
+                    <button type="button" class="hl-btn green" title="Grifar em Verde" onclick="highlightSelection(1, '#bbf7d0')"></button>
+                    <button type="button" class="hl-btn pink" title="Grifar em Rosa" onclick="highlightSelection(1, '#fbcfe8')"></button>
+                    <button type="button" class="clear-hl-btn" onclick="clearHighlights(1)">Limpar Grifos</button>
+                    <button type="button" class="summary-btn" onclick="enableRefEdit(1)">Editar Texto</button>
+                </div>
+            </div>
+
+            <div id="ref-view-mode-1" class="ref-content"></div>
+
+            <div id="ref-edit-mode-1" class="ref-edit-box hidden">
+                <textarea id="ref-textarea-1" rows="10" oninput="autoSaveRefEdit(1)" placeholder="Digite ou cole o material teórico desta matéria..."></textarea>
+                <div class="ref-edit-actions" style="justify-content: space-between; align-items: center;">
+                    <small id="ref-status-1" style="color: var(--success); font-weight: 600;">✓ Salvo automaticamente</small>
+                    <button type="button" class="save-inline-btn" onclick="saveRefEdit(1)">Concluir Edição</button>
+                </div>
+            </div>
+        </article>
+
+        <!-- BLOCO 2: CONTEÚDO COMPLEMENTAR -->
+        <article class="card reference-card">
+            <div class="ref-header">
+                <h2 id="ref-title-2">✍️ Resumo:</h2>
+                
+                <div class="ref-toolbar" id="ref-toolbar-2">
+                    <span class="toolbar-label">Marca-texto:</span>
+                    <button type="button" class="hl-btn yellow" title="Grifar em Amarelo" onclick="highlightSelection(2, '#fef08a')"></button>
+                    <button type="button" class="hl-btn green" title="Grifar em Verde" onclick="highlightSelection(2, '#bbf7d0')"></button>
+                    <button type="button" class="hl-btn pink" title="Grifar em Rosa" onclick="highlightSelection(2, '#fbcfe8')"></button>
+                    <button type="button" class="clear-hl-btn" onclick="clearHighlights(2)">Limpar Grifos</button>
+                    <button type="button" class="summary-btn" onclick="enableRefEdit(2)">Editar Texto</button>
+                </div>
+            </div>
+
+            <div id="ref-view-mode-2" class="ref-content"></div>
+
+            <div id="ref-edit-mode-2" class="ref-edit-box hidden">
+                <textarea id="ref-textarea-2" rows="10" oninput="autoSaveRefEdit(2)" placeholder="Cole aqui os artigos de lei, súmulas ou questões comentadas..."></textarea>
+                <div class="ref-edit-actions" style="justify-content: space-between; align-items: center;">
+                    <small id="ref-status-2" style="color: var(--success); font-weight: 600;">✓ Salvo automaticamente</small>
+                    <button type="button" class="save-inline-btn" onclick="saveRefEdit(2)">Concluir Edição</button>
+                </div>
+            </div>
+        </article>
+
+
+
+            <!-- Modo Leitura -->
+            <div id="ref-view-mode" class="ref-content"></div>
+
+            <!-- Modo Edição -->
+            <div id="ref-edit-mode" class="ref-edit-box hidden">
+                <textarea id="ref-textarea" rows="10" placeholder="Digite ou cole o material teórico desta matéria..."></textarea>
+                <div class="ref-edit-actions">
+                    <button type="button" id="cancel-ref-btn" class="mode-btn" onclick="cancelRefEdit()">Cancelar</button>
+                    <button type="button" id="save-ref-btn" class="save-inline-btn" onclick="saveRefEdit()">Salvar Material</button>
+                </div>
+            </div>
+        </article>
+
+
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+
